@@ -1,0 +1,26 @@
+.elementor-91 .elementor-element.elementor-element-852e3c9>.elementor-container>.elementor-column>.elementor-widget-wrap {
+    align-content: center;
+    align-items: center
+}
+
+.elementor-91 .elementor-element.elementor-element-6b2395b {
+    text-align: left
+}
+
+.elementor-91 .elementor-element.elementor-element-6b2395b img {
+    width: 121px
+}
+
+.elementor-91 .elementor-element.elementor-element-c48ea9c {
+    text-align: right
+}
+
+@media(min-width:768px) {
+    .elementor-91 .elementor-element.elementor-element-ab1238c {
+        width: 14%
+    }
+
+    .elementor-91 .elementor-element.elementor-element-2c253e3 {
+        width: 86%
+    }
+}
