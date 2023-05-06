@@ -1,0 +1,30 @@
+.elementor-148 .elementor-element.elementor-element-2292e97>.elementor-container {
+    max-width: 1300px
+}
+
+.elementor-148 .elementor-element.elementor-element-2292e97>.elementor-container>.elementor-column>.elementor-widget-wrap {
+    align-content: center;
+    align-items: center
+}
+
+.elementor-148 .elementor-element.elementor-element-2292e97 {
+    padding: 60px 0
+}
+
+.elementor-148 .elementor-element.elementor-element-c385779 {
+    text-align: center
+}
+
+.elementor-148 .elementor-element.elementor-element-8b314e8 {
+    text-align: right
+}
+
+@media(max-width:767px) {
+    .elementor-148 .elementor-element.elementor-element-c385779 {
+        text-align: center
+    }
+
+    .elementor-148 .elementor-element.elementor-element-8b314e8 {
+        text-align: center
+    }
+}
