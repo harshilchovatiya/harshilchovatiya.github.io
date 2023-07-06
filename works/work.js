@@ -13,12 +13,12 @@ function generateHTML(classname, category, name, link, img, desc, desc1) {
         <div class="desc">
           <span class="category">${category}</span>
           <h5 class="name">
-            <a href="${link}">${name}</a>
+            <a href="">${name}</a>
           </h5>
           <div class="text">
             <p>${desc}</p>
           </div>
-          <a href="${link}" class="">See project</a>
+          <a href="" class="">See project</a>
         </div>
         <div class="lazyload bg-img" data-bg="../images/pat-2.png"> </div>
       </div>
