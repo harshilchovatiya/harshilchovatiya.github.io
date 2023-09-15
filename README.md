@@ -8,7 +8,7 @@ Welcome to my portfolio website, a window into my creative journey. Explore a co
 
 ## Demo
 
-https://harshilchovatiya.github.io/harshil
+https://harshilchovatiya.github.io/
 ## Features
 
 - Change the theame
