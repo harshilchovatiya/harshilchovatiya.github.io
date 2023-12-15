@@ -1,0 +1,159 @@
+:root {
+  --primary: #F0EBE3;
+  --secondary: #FFDEC1;
+  --tertiary: #FFCBAA;
+  /* --primary: #c27b7f;
+  --secondary: #876585;
+  --tertiary: #fcb0b4; */
+}
+
+::selection,
+.divider-traingle:before,
+.divider-traingle:after,
+.menu > .nav-item a::after,
+.button,
+.button__primary::before,
+.btn__secondary:hover,
+.social-icon li a,
+.achieve__icon,
+.achieve__content__item:hover,
+.achieve3__item::before,
+.author__image:after,
+.authorv2__image,
+.booksv1__item--icon,
+.faqs-accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button:not(.collapsed),
+.hero__images--badge,
+.hero__author--inner3:before,
+.testi-row .swiper-pagination-bullet,
+.contactv4__content li i,
+.chapter-preview .swiper-button-next::after,
+.chapter-preview .swiper-button-prev::after,
+.blog__pagination .page-link:focus,
+.all-blog2__sidebar form i {
+  background-color: var(--primary);
+}
+@media screen and (max-width: 330px) {
+  .hero .btn__secondary {
+    background-color: var(--primary);
+  }
+}
+
+.bg-secondary,
+.button__primary,
+.social-icon li a:hover,
+.achieve__content__item:hover .achieve__icon,
+.achieve__image:after,
+.achieve3__item::after,
+.hero__author--inner3:after,
+.contactv4__content li i:hover,
+.blog__pagination .page-link:hover {
+  background: var(--secondary);
+}
+
+.bg-tertiary,
+.hero__images4:after,
+.hero__author--inner2--pic::before,
+.hero__book--wrapper::before {
+  background: var(--tertiary);
+}
+
+/* color primary */
+.color-primary,
+[class*="section-title-"] span,
+.header .navbar .nav-item.current-menu-item .nav-link, .header .navbar .nav-item.current-menu-item i, .header .navbar .nav-item.active .nav-link, .header .navbar .nav-item.active i, .header .navbar .nav-item:hover .nav-link, .header .navbar .nav-item:hover i, .header .navbar .nav-item:hover .dropdown-menu .nav-item:hover .nav-link, .header .navbar .nav-item:hover .dropdown-menu .nav-item:hover i,
+.btn__secondary,
+.link,
+.author__content__desc li i,
+.authorv3__content--badge,
+.books__book__title,
+.booksv1__contnet--badge,
+.booksv1__item:hover .booksv1__item--text h3,
+.contact__address__content li a:hover,
+.testimonialv2__card-subtitle,
+.testi-row .testi-card__quotation i,
+.menu > .nav-item.submenu .dropdown-menu .nav-item:hover > .nav-link,
+.menu > .nav-item.submenu .dropdown-menu .nav-item:focus > .nav-link,
+.blog__single-post__content h2 a,
+.blog__single-post__meta i,
+.events__single-event__content h2 a,
+.events__single-event__meta i,
+.blog-title ul li a,
+.ctav3__content h2 a,
+.ctav3__content__icon i,
+.dropdown-toggle.active.show span,
+.menu > .nav-item:hover .nav-link,
+.counters__stats-box h3,
+.blog__pagination .page-link,
+.single-blog__metainfo li i,
+.single-blog__para__quote__icon i,
+.single-blog__para .content-feature-list li i,
+.single-event__sidebar__details ul li i,
+.footer__topv2 .title,
+.not-found h1,
+.footer__topv2 .title,
+.video-btn,
+.badge-text, .all-blog2__area__menu h2 a:hover, .blog__single-post__content .blog-metainfo li i, .blog__single-post__meta i, .blog__single-post__content .blog-metainfo li a:hover, .blog__single-post .blog-metainfo li a:hover, .blog__single-post .blog-metainfo li i, .header .navbar .navbar-nav li a:hover, .header .navbar .navbar-nav li.active a, .counters__stats-icon i, .video-btn:hover, a:hover, .footer__menu li a:hover {
+  color: var(--primary);
+}
+.color-secondary,
+.link:hover,
+.contact__address__content li a,
+.blog__single-post__content h2 a:hover,
+.events__single-event__content h2 a:hover,
+.blog-title ul li a:hover,
+.ctav3__content h2 a:hover, .counters__stats-box__number {
+  color: var(--secondary);
+}
+
+.color-tertiary,
+.circle {
+  color: var(--tertiary);
+}
+
+/* border primary */
+.border-primary,
+.divider-traingle,
+.btn__secondary::before,
+.btn__secondary::after,
+.hero__author--inner3--wrapper::before,
+blockquote,
+.testi-row .testi-card__user-info, .hero__images3::after, .circle {
+  border-color: var(--primary);
+}
+
+.contact-form-box input:focus,
+.contact-form-box textarea:focus,
+.cta-form-box input:focus {
+  border-bottom: 2px solid var(--primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+.shadow-style-01,
+.social-icon li a,
+.achieve__icon,
+.booksv1__item--icon,
+.contactv4__content li i,
+.chapter-preview .swiper-button-next::after,
+.chapter-preview .swiper-button-prev::after,
+.chapter__preview2 .panel {
+  box-shadow: 3px 3px var(--secondary);
+}
+.counters__stats-box,
+.achievement__item {
+  box-shadow: 5px 5px var(--secondary);
+}
+
+.achieve__content__item:hover .achieve__icon {
+  box-shadow: 3px 3px var(--tertiary);
+}
+
+.pricing__item:hover,
+.pricing__item.active {
+  box-shadow: 5px 5px var(--secondary);
+}

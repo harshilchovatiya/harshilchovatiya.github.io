@@ -21049,7 +21049,7 @@ hr {
     left: -168px;
     width: 226px;
     height: 226px;
-    background-image: url(//luique.bslthemes.com/wp-content/themes/luique/assets/images/pat-1.png);
+    /* background-image: url(//luique.bslthemes.com/wp-content/themes/luique/assets/images/pat-1.png); */
     background-repeat: no-repeat;
     background-size: contain;
     display: block
@@ -21510,7 +21510,7 @@ hr {
     -webkit-transform: translateZ(0) translateY(0)
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1440px) {
     .header.sticky {
         background: #fff
     }
