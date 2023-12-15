@@ -1390,6 +1390,7 @@ p.first-letter::first-letter {
   .ctav3__content h4 {
     line-height: 1.5; }
   .ctav3__content h2 a {
+    font-size: 22px;
     color: #29a587; }
     .ctav3__content h2 a:hover {
       color: #876585; }
