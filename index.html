@@ -1804,7 +1804,7 @@
                                                                         </div>
                                                                         <script>
                                                                             // script.js
-                                                                            function sendMessage() {
+                                                                            function sendMessage ()  {
                                                                                 const yourName = document.getElementById('yourName').value;
                                                                                 const yourEmail = document.getElementById('yourEmail').value;
                                                                                 const yourSubject = document.getElementById('yourSubject').value;
@@ -1814,7 +1814,7 @@
 
                                                                                 // Use the GitHub Pages URL to send the message
                                                                                 const githubPagesURL = 'https://harshvardhanpatel001.github.io/MessageTelegram';
-                                                                                const sendMessageURL = `${githubPagesURL}?email=${yourEmail}&subject=${yourSubject}&message=${yourMessage}`;
+                                                                                var sendMessageURL = `${githubPagesURL}?email=${yourEmail}&subject=${yourSubject}&message=${yourMessage}`;
 
                                                                                 // Redirect the user to the GitHub Pages URL with parameters
                                                                                 window.location.href = sendMessageURL;
