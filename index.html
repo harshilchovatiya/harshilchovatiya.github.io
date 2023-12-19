@@ -1793,7 +1793,7 @@
                                                                             onclick="sendMessage()"><span>Send
                                                                                 Message</span></button>
                                                                     </div>
-                                                                    <div id="iframeContainer"></div>
+                                                                    <div id="iframeContainer" style="display: none;"></div>
                                                                     <script>
                                                                         function sendMessage() {
                                                                             const yourName = document.getElementById('yourName').value;
@@ -1816,9 +1816,7 @@
                                                                             const iframeContainer = document.getElementById('iframeContainer');
                                                                             iframeContainer.appendChild(iframe);
 
-                                                                            const formContainer = document.getElementById('formContainer');
-                                                                            // formContainer.style.display = 'none';
-                                                                            
+                                                                            const formContainer = document.getElementById('formContainer');                                                                            
                                                                             
                                                                             setTimeout(() => {
                                                                                 iframeContainer.removeChild(iframe);
@@ -1827,7 +1825,7 @@
                                                                                 document.getElementById('yourEmail').value = '';
                                                                                 document.getElementById('yourSubject').value = '';
                                                                                 document.getElementById('yourMessage').value = '';
-                                                                            }, 500);
+                                                                            }, 2000);
                                                                         }
 
 
