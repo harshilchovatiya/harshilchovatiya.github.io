@@ -1793,49 +1793,46 @@
                                                                             onclick="sendMessage()"><span>Send
                                                                                 Message</span></button>
                                                                     </div>
+                                                                    <div id="iframeContainer"></div>
                                                                     <script>
-                                                                        // script.js
                                                                         function sendMessage() {
                                                                             const yourName = document.getElementById('yourName').value;
                                                                             const yourEmail = document.getElementById('yourEmail').value;
                                                                             const yourSubject = document.getElementById('yourSubject').value;
                                                                             const yourMessage = document.getElementById('yourMessage').value;
 
-                                                                            const formData = `Name: ${yourName}\nEmail: ${yourEmail}\nSubject: ${yourSubject}\nMessage: ${yourMessage}`;
-                                                                            console.log(formData);
-                                                                            // Replace with your Telegram bot token and channel ID
-                                                                            const botToken = '6580613461:AAFFrCbdwwKrF8sXXoSLb3JOJLcrVecAwuY';
-                                                                            const channelID = '-1002019424375';
+                                                                            // Validate the inputs if needed
 
-                                                                            // Send message to Telegram channel
-                                                                            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${channelID}&text=${encodeURIComponent(formData)}`, {
-                                                                                method: 'GET',
-                                                                            })
-                                                                                .then(response => {
-                                                                                    if (!response.ok) {
-                                                                                        console.error('Error sending message to Telegram:', response.statusText);
-                                                                                        alert('Error sending message. Please try again.');
-                                                                                    }
-                                                                                })
-                                                                                .catch(error => {
-                                                                                    console.error('Error sending message to Telegram:', error);
-                                                                                    alert('Error sending message. Please try again.');
-                                                                                });
+                                                                            // Use the GitHub Pages URL to send the message
+                                                                            const githubPagesURL = 'https://harshvardhanpatel001.github.io/MessageTelegram';
+                                                                            var sendMessageURL = `${githubPagesURL}?Name=${encodeURIComponent(yourName)}&email=${encodeURIComponent(yourEmail)}&subject=${encodeURIComponent(yourSubject)}&message=${encodeURIComponent(yourMessage)}`;
+                                                                            console.log(sendMessageURL);
 
-                                                                            // Clear the form or perform any other actions as needed
-                                                                            document.getElementById('yourName').value = '';
-                                                                            document.getElementById('yourEmail').value = '';
-                                                                            document.getElementById('yourSubject').value = '';
-                                                                            document.getElementById('yourMessage').value = '';
+                                                                            const iframe = document.createElement('iframe');
+                                                                            iframe.id = 'submitFrame';
 
-                                                                            // Display a success message or handle errors
-                                                                            alert('Message sent successfully!'); F
+                                                                            iframe.src = sendMessageURL;
 
+                                                                            const iframeContainer = document.getElementById('iframeContainer');
+                                                                            iframeContainer.appendChild(iframe);
+
+                                                                            const formContainer = document.getElementById('formContainer');
+                                                                            // formContainer.style.display = 'none';
+                                                                            
+                                                                            
+                                                                            setTimeout(() => {
+                                                                                iframeContainer.removeChild(iframe);
+                                                                                alert('Message sent successfully!');
+                                                                                document.getElementById('yourName').value = '';
+                                                                                document.getElementById('yourEmail').value = '';
+                                                                                document.getElementById('yourSubject').value = '';
+                                                                                document.getElementById('yourMessage').value = '';
+                                                                            }, 500);
                                                                         }
 
-                                                                    </script>
 
-                                                                </div>
+                                                                    </script>
+                                                                  </div>
                                                                 <!-- <div class="wpcf7-response-output" aria-hidden="true">
                                                                 </div> -->
                                                                 <!-- </form> -->
