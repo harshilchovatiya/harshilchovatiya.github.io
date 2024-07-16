@@ -99,6 +99,19 @@
             "height": "175 cm",
             "nationality": "Indian",
             "email": "harshilbmk@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "City Name",
+                "addressRegion": "State Name",
+                "addressCountry": "India"
+            },
+            "knowsAbout": ["Flutter", "Dart", "Mobile App Development", "Blogging", "JavaScript", "Web Development"],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Current Company",
+                "url": "https://currentcompany.com"
+            },
+            "award": "Best Flutter Developer 2022",
             "sameAs": [
                 "https://www.linkedin.com/in/harshilbmk",
                 "https://twitter.com/harshilbmk",
@@ -106,10 +119,88 @@
                 "https://www.youtube.com/@harshilchovatiyaa",
                 "https://github.com/harshilchovatiya",
                 "https://harshilchovatiya.blogspot.com"
-            ]
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "harshilbmk@gmail.com"
+            },
+            "hasPart": {
+                "@type": "Book",
+                "name": "HTML, CSS AND JAVASCRIPT Demystified",
+                "author": {
+                    "@type": "Person",
+                    "name": "Harshil Chovatiya"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Harshil Chovatiya",
+                    "logo": "https://harshilchovatiya.github.io/images/android-chrome-192x192.png",
+                    "url": "https://harshilchovatiya.github.io"
+                },
+                "datePublished": "2023-12-17",
+                "description": "Embark on a coding odyssey with 'HTML, CSS, and JavaScript Demystified' by Harshil Chovatiya. This concise guide unravels the essentials, offering practical insights and hands-on exercises to elevate your web development skills. Master responsive design, conquer cross-browser challenges, and delve into advanced techniques—all in one transformative journey.",
+                "bookEdition": "First Edition",
+                "genre": "Web Development",
+                "inLanguage": "en",
+                "numberOfPages": 97,
+                "keywords": ["HTML", "CSS", "JavaScript", "Web Development", "Programming", "Harshil Chovatiya"],
+                "bookFormat": "https://schema.org/EBook",
+                "offers": [
+                    {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "price": "2.99",
+                        "priceCurrency": "USD",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "Amazon",
+                            "url": "https://www.amazon.com/HTML-JAVASCRIPT-Demystified-Harshil-Chovatiya-ebook/dp/B0CQK2KWPQ/"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "price": "58",
+                        "priceCurrency": "INR",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "Google Play",
+                            "url": "https://play.google.com/store/books/details?id=HTML_JAVASCRIPT_Demystified_Harshil_Chovatiya"
+                        }
+                    }
+                ],
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.5",
+                    "reviewCount": 120
+                },
+                "review": [
+                    {
+                        "@type": "Review",
+                        "author": {
+                            "@type": "Person",
+                            "name": "Dikshant Gajera"
+                        },
+                        "reviewBody": "A fantastic guide for both beginners and experienced developers. Highly recommended!",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": 5
+                        }
+                    }
+                ],
+                "image": "https://harshilchovatiya.github.io/book/assets/images/Book-Cover.jpg",
+                "url": "https://harshilchovatiya.github.io/book/index.html",
+                "sameAs": [
+                    "https://www.amazon.com/HTML-JAVASCRIPT-Demystified-Harshil-Chovatiya-ebook/dp/B0CQK2KWPQ/",
+                    "https://play.google.com/store/books/details?id=GZvpEAAAQBAJ",
+                    "https://harshilbmk.gumroad.com/l/aohqp"
+                ]
+            }
         }
         </script>
-        
+
+
 </head>
 
 <body
@@ -1794,7 +1885,8 @@
                                                                             onclick="sendMessage()"><span>Send
                                                                                 Message</span></button>
                                                                     </div>
-                                                                    <div id="iframeContainer" style="display: none;"></div>
+                                                                    <div id="iframeContainer" style="display: none;">
+                                                                    </div>
                                                                     <script>
                                                                         function sendMessage() {
                                                                             const yourName = document.getElementById('yourName').value;
@@ -1817,8 +1909,8 @@
                                                                             const iframeContainer = document.getElementById('iframeContainer');
                                                                             iframeContainer.appendChild(iframe);
 
-                                                                            const formContainer = document.getElementById('formContainer');                                                                            
-                                                                            
+                                                                            const formContainer = document.getElementById('formContainer');
+
                                                                             setTimeout(() => {
                                                                                 iframeContainer.removeChild(iframe);
                                                                                 alert('Message sent successfully!');
@@ -1831,7 +1923,7 @@
 
 
                                                                     </script>
-                                                                  </div>
+                                                                </div>
                                                                 <!-- <div class="wpcf7-response-output" aria-hidden="true">
                                                                 </div> -->
                                                                 <!-- </form> -->
