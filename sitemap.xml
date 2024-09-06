@@ -25,29 +25,8 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- FlexiBottomNavigation Project -->
-  <url>
-    <loc>https://pub.dev/packages/flexi_bottom_nav</loc>
-    <lastmod>2024-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+ 
 
-  <!-- AI Chat Bot Project -->
-  <url>
-    <loc>https://ai-content-kappa.vercel.app</loc>
-    <lastmod>2024-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- ImageToClipboard Plugin -->
-  <url>
-    <loc>https://pub.dev/packages/image_to_clipboard</loc>
-    <lastmod>2024-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <!-- Utility Tools App -->
   <url>
