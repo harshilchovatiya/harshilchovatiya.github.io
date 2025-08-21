@@ -2169,48 +2169,12 @@
                                                                             </div>
                                                                         </div>
                                                                         <button class="btn"
-                                                                            onclick="sendMessage()"><span>Send
+                                                                         ><span>Send
                                                                                 Message</span></button>
                                                                     </div>
                                                                     <div id="iframeContainer" style="display: none;">
                                                                     </div>
-                                                                    <script>
-                                                                        function sendMessage() {
-                                                                            const yourName = document.getElementById('yourName').value;
-                                                                            const yourEmail = document.getElementById('yourEmail').value;
-                                                                            const yourSubject = document.getElementById('yourSubject').value;
-                                                                            const yourMessage = document.getElementById('yourMessage').value;
-
-                                                                            // Validate the inputs if needed
-
-                                                                            // Use the GitHub Pages URL to send the message
-                                                                            const githubPagesURL = 'https://harshvardhanpatel001.github.io/MessageTelegram';
-                                                                            var sendMessageURL = `${githubPagesURL}?Name=${encodeURIComponent(yourName)}&email=${encodeURIComponent(yourEmail)}&subject=${encodeURIComponent(yourSubject)}&message=${encodeURIComponent(yourMessage)}`;
-                                                                            console.log(sendMessageURL);
-
-                                                                            const iframe = document.createElement('iframe');
-                                                                            iframe.id = 'submitFrame';
-
-                                                                            iframe.src = sendMessageURL;
-
-                                                                            const iframeContainer = document.getElementById('iframeContainer');
-                                                                            iframeContainer.appendChild(iframe);
-
-                                                                            const formContainer = document.getElementById('formContainer');
-
-                                                                            setTimeout(() => {
-                                                                                iframeContainer.removeChild(iframe);
-                                                                                alert('Message sent successfully!');
-                                                                                document.getElementById('yourName').value = '';
-                                                                                document.getElementById('yourEmail').value = '';
-                                                                                document.getElementById('yourSubject').value = '';
-                                                                                document.getElementById('yourMessage').value = '';
-                                                                            }, 2000);
-                                                                        }
-
-
-                                                                    </script>
-                                                                </div>
+                                                                                                                     </div>
 
                                                             </div>
                                                         </div>
@@ -2277,7 +2241,7 @@
                                         <div class="copyright-text scrolla-element-anim-1 scroll-animate"
                                             data-animate="active">
                                             <div>
-                                                <p>© 2022 <strong>HARSHIL</strong>. All rights reserved</p>
+                                                <p>© 2025 <strong>HARSHIL</strong>. All rights reserved</p>
                                             </div>
                                         </div>
                                     </div>
