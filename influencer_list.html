@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILĀVYA — South India Influencer Selection</title>
+<style>
+:root {
+  --bg:#f5f6fb; --card:#fff; --text:#171927; --muted:#7c8298; --line:#e5e7ef;
+  --purple:#5b4cf6; --purple-soft:#eeebff; --green:#16a36a; --gold:#b78625;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}
+.top{padding:34px 42px 22px;background:linear-gradient(135deg,#fafaff,#f1f3fb);border-bottom:1px solid var(--line)}
+.brand{font-size:14px;letter-spacing:4px;font-weight:800;color:#2a2940}
+h1{margin:9px 0 4px;font-size:31px;letter-spacing:-1px}
+.subtitle{color:var(--muted);font-size:14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+button,.btn{border:1px solid var(--line);background:#fff;color:#3f4355;border-radius:11px;padding:11px 16px;font-weight:700;cursor:pointer;text-decoration:none}
+button.primary,.btn.primary{background:var(--purple);color:white;border-color:var(--purple)}
+.container{padding:22px 42px 50px}
+.toolbar{display:grid;grid-template-columns:minmax(280px,1fr) 190px 220px;gap:12px;margin-bottom:14px}
+.search,.select{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px;font-size:15px;outline:none}
+.chips{display:flex;gap:9px;overflow:auto;padding-bottom:17px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.chip{white-space:nowrap;border:1px solid var(--line);background:white;padding:10px 17px;border-radius:999px;color:#68708a;font-weight:700;cursor:pointer}
+.chip.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.stats{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.stat b{display:block;font-size:19px}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;min-height:355px;display:flex;flex-direction:column;box-shadow:0 4px 16px rgba(33,38,75,.03)}
+.profile{display:flex;align-items:center;gap:12px}
+.avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;background:linear-gradient(135deg,#5b4cf6,#9a8fff);flex:0 0 auto}
+.name{font-size:17px;font-weight:800;line-height:1.15}
+.handle{color:#8b90a2;font-size:13px;margin-top:4px}
+.verified{color:var(--purple);font-size:14px;margin-left:4px}
+.tag{display:inline-block;background:var(--purple-soft);color:#4e42d6;font-size:12px;font-weight:800;padding:8px 11px;border-radius:9px;margin-top:18px}
+.meta{margin-top:17px;padding-top:16px;border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;gap:12px;margin:10px 0;font-size:13px}
+.row .label{color:#8a8fa1}
+.row .value{font-weight:700;text-align:right}
+.fit{margin-top:10px;color:#5e6375;font-size:12px;line-height:1.45;min-height:35px}
+.footer{margin-top:auto;padding-top:15px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+.open{color:var(--purple);font-weight:800;text-decoration:none;font-size:13px}
+.priority{font-size:11px;font-weight:900;border-radius:8px;padding:6px 8px;background:#f4f4f6;color:#555}
+.p1{background:#fff3d8;color:#9a6900} .p2{background:#edf1ff;color:#4a57a8} .p3{background:#f0f0f2;color:#646773}
+.empty{padding:50px;text-align:center;color:var(--muted);grid-column:1/-1;background:#fff;border:1px dashed var(--line);border-radius:18px}
+.note{font-size:11px;color:var(--muted);margin-top:18px;line-height:1.5}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:850px){.top,.container{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar{grid-template-columns:1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+@media print {
+  @page{size:A4 landscape;margin:10mm}
+  body{background:#fff}
+  .top{padding:15px 0;border:0;background:#fff}
+  .container{padding:0}
+  .actions,.toolbar,.chips,.stats,.note{display:none!important}
+  .grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .card{box-shadow:none;border-radius:8px;min-height:270px;padding:12px;break-inside:avoid}
+  .avatar{width:40px;height:40px;font-size:12px}
+  .name{font-size:12px} .handle{font-size:9px} .tag{font-size:9px;padding:5px 7px;margin-top:10px}
+  .row{font-size:9px;margin:5px 0} .fit{font-size:8px;min-height:24px}
+  .open{font-size:9px} .priority{font-size:8px;padding:4px 6px}
+  h1{font-size:22px}
+  .subtitle{font-size:10px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">ILĀVYA</div>
+  <h1>South India High-Profile Influencer Selection</h1>
+  <div class="subtitle">Premium creator shortlist · Bengaluru · Hyderabad · Chennai · Food · Wellness · Fitness · Lifestyle</div>
+  <div class="actions">
+    <button class="primary" onclick="window.print()">Export / Save as PDF</button>
+    <button onclick="clearFilters()">Reset Filters</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="toolbar">
+    <input id="search" class="search" placeholder="Search name, handle, niche or city…" oninput="render()">
+    <select id="priority" class="select" onchange="render()">
+      <option value="all">All priorities</option>
+      <option value="P1">P1 — Immediate</option>
+      <option value="P2">P2 — High value</option>
+      <option value="P3">P3 — Strategic celebrity</option>
+    </select>
+    <select id="niche" class="select" onchange="render()">
+      <option value="all">All niches</option>
+    </select>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <div class="stats" id="stats"></div>
+  <section class="grid" id="grid"></section>
+  <div class="note">Screening database only. Profiles without a usable Instagram link have been removed. Kochi / Kerala, Mangaluru and Mysuru have also been removed from this client shortlist. Followers, rates and availability should be reconfirmed before contracting.</div>
+</main>
+
+<script>
+const DATA = [{"city": "Bengaluru", "name": "Aathira Sethumadhavan", "handle": "@aathirasethumadhavan", "niche": "Chef / Nutrition / Wellness", "followers": "~968K", "priority": "P1", "type": "Paid", "fit": "High-profile wellness + food fit", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/aathirasethumadhavan/", "initials": "AS"}, {"city": "Bengaluru", "name": "Adhya S", "handle": "@auraartofhealthyliving", "niche": "Nutrition / Wellness", "followers": "~1.4M", "priority": "P1", "type": "Paid", "fit": "Strong wellness authority", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/auraartofhealthyliving/", "initials": "AS"}, {"city": "Bengaluru", "name": "Hina Gujral", "handle": "@funfoodandfrolic", "niche": "Food / Healthy recipes", "followers": "~1.1M", "priority": "P1", "type": "Paid", "fit": "Premium food/lifestyle fit", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/funfoodandfrolic/", "initials": "HG"}, {"city": "Bengaluru", "name": "Shreya Agarwala", "handle": "@ohcheatday", "niche": "Food / Chef / Lifestyle", "followers": "~2M", "priority": "P1", "type": "Paid", "fit": "High reach; aspirational food", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/ohcheatday/", "initials": "SA"}, {"city": "Bengaluru", "name": "Malvika Hada Kumar", "handle": "@thespicystory", "niche": "Food / Lifestyle", "followers": "~1.2M", "priority": "P1", "type": "Paid", "fit": "Premium food storytelling", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/thespicystory/", "initials": "MH"}, {"city": "Bengaluru", "name": "Richa Gupta", "handle": "@my_foodstory", "niche": "Food / Recipes", "followers": "~392K", "priority": "P1", "type": "Paid", "fit": "Strong recipe integration", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/my_foodstory/", "initials": "RG"}, {"city": "Bengaluru", "name": "Archana Doshi", "handle": "@archanaskitchen", "niche": "Food / Cooking", "followers": "~357K", "priority": "P1", "type": "Paid", "fit": "Established food authority", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/archanaskitchen/", "initials": "AD"}, {"city": "Bengaluru", "name": "Pragya Piparsania", "handle": "@yumcurry88", "niche": "Food / Healthy lifestyle", "followers": "~812K", "priority": "P2", "type": "Paid", "fit": "High reach + food", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/yumcurry88/", "initials": "PP"}, {"city": "Bengaluru", "name": "Vijayalakshmi Vikram", "handle": "@viji_moo", "niche": "Vegan / Food / Lifestyle", "followers": "~500K", "priority": "P1", "type": "Paid", "fit": "Plant-based alignment", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/viji_moo/", "initials": "VV"}, {"city": "Bengaluru", "name": "Dhanush Amin", "handle": "@dhanushh.x", "niche": "Fitness / Lifestyle", "followers": "~455K", "priority": "P2", "type": "Paid", "fit": "Fitness + aspirational audience", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/dhanushh.x/", "initials": "DA"}, {"city": "Bengaluru", "name": "Sivaguru Kanthasamy", "handle": "@cdt_siva", "niche": "Fitness / Lifestyle", "followers": "~832K", "priority": "P2", "type": "Paid", "fit": "High-profile fitness reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/cdt_siva/", "initials": "SK"}, {"city": "Bengaluru", "name": "Isha Borah", "handle": "@ishaborah", "niche": "Fashion / Lifestyle", "followers": "~1.9M", "priority": "P2", "type": "Paid", "fit": "Premium lifestyle reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/ishaborah/", "initials": "IB"}, {"city": "Bengaluru", "name": "Ariya Hegde", "handle": "@ariya_hegde", "niche": "Fashion / Lifestyle", "followers": "~811K", "priority": "P2", "type": "Paid", "fit": "Aspirational city audience", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/ariya_hegde/", "initials": "AH"}, {"city": "Bengaluru", "name": "Trinetra Haldar Gummaraju", "handle": "@trinetra", "niche": "Lifestyle / Culture", "followers": "~400K", "priority": "P2", "type": "Paid", "fit": "High-profile lifestyle/culture", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/trinetra/", "initials": "TH"}, {"city": "Bengaluru", "name": "Ayush Wadhwa", "handle": "@ayushwadhwa", "niche": "Business / Entrepreneurship", "followers": "~386K", "priority": "P2", "type": "Paid", "fit": "Premium professional audience", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/ayushwadhwa/", "initials": "AW"}, {"city": "Bengaluru", "name": "Vaibhav Sisinty", "handle": "@vaibhavsisinty", "niche": "Business / Tech / Lifestyle", "followers": "~2.1M", "priority": "P2", "type": "Strategic", "fit": "Large professional audience", "deal": "Paid/strategic collaboration", "barter": "Low / unlikely", "url": "https://www.instagram.com/vaibhavsisinty/", "initials": "VS"}, {"city": "Hyderabad", "name": "Mohammed Siraj", "handle": "@mohammedsirajofficial", "niche": "Cricket / Fitness", "followers": "~15M", "priority": "P3", "type": "Celebrity paid", "fit": "Major Hyderabad affinity; later-stage", "deal": "Negotiated celebrity campaign; no barter assumption", "barter": "Low / unlikely", "url": "https://www.instagram.com/mohammedsirajofficial/", "initials": "MS"}, {"city": "Hyderabad", "name": "Nabha Natesh", "handle": "@nabhanatesh", "niche": "Lifestyle / Entertainment", "followers": "~4.9M", "priority": "P2", "type": "Celebrity paid", "fit": "High-profile lifestyle", "deal": "Negotiated celebrity campaign; no barter assumption", "barter": "Low / unlikely", "url": "https://www.instagram.com/nabhanatesh/", "initials": "NN"}, {"city": "Hyderabad", "name": "Naseer Khan", "handle": "@naseer_khan0054", "niche": "Luxury Cars / Lifestyle", "followers": "~777K", "priority": "P2", "type": "Paid", "fit": "Luxury audience; outside category", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/naseer_khan0054/", "initials": "NK"}, {"city": "Hyderabad", "name": "Monika Blends", "handle": "@monikablends", "niche": "Lifestyle / Beauty", "followers": "~227K", "priority": "P1", "type": "Paid", "fit": "Premium lifestyle fit", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/monikablends/", "initials": "MB"}, {"city": "Hyderabad", "name": "Akanksha Kommirelly", "handle": "@akankshakommirelly", "niche": "Lifestyle", "followers": "~197K", "priority": "P1", "type": "Paid", "fit": "City lifestyle audience", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/akankshakommirelly/", "initials": "AK"}, {"city": "Hyderabad", "name": "Shikha Vijay", "handle": "@cozy_homestyling", "niche": "Home / Lifestyle", "followers": "~164K", "priority": "P1", "type": "Paid", "fit": "Premium home/lifestyle", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/cozy_homestyling/", "initials": "SV"}, {"city": "Hyderabad", "name": "Mehaboob Dil Se", "handle": "@mehaboobdilse", "niche": "Lifestyle / Travel", "followers": "~1M+", "priority": "P2", "type": "Paid", "fit": "Strong regional reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/mehaboobdilse/", "initials": "MD"}, {"city": "Hyderabad", "name": "Kanak Gurnani", "handle": "@kanak_gurnani", "niche": "Healthy Food / Parenting", "followers": "~876K", "priority": "P1", "type": "Paid", "fit": "Family + healthy lifestyle", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/kanak_gurnani/", "initials": "KG"}, {"city": "Hyderabad", "name": "Abijeet", "handle": "@abijeethyderabad", "niche": "Fitness / Lifestyle", "followers": "~1M", "priority": "P2", "type": "Paid", "fit": "Fitness/lifestyle reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/abijeethyderabad/", "initials": "A"}, {"city": "Hyderabad", "name": "Srikanth Kidambi", "handle": "@srikanth_kidambi", "niche": "Sports / Fitness", "followers": "~175K", "priority": "P2", "type": "Paid", "fit": "Premium sports credibility", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/srikanth_kidambi/", "initials": "SK"}, {"city": "Chennai", "name": "Sivaangi Krishnakumar", "handle": "@sivaangi.krish", "niche": "Food / Entertainment", "followers": "~6.2M", "priority": "P3", "type": "Celebrity paid", "fit": "Huge Tamil reach; later-stage", "deal": "Negotiated celebrity campaign; no barter assumption", "barter": "Low / unlikely", "url": "https://www.instagram.com/sivaangi.krish/", "initials": "SK"}, {"city": "Chennai", "name": "Gouri G Kishan", "handle": "@gourigkofficial", "niche": "Lifestyle / Entertainment", "followers": "~1.6M", "priority": "P2", "type": "Celebrity paid", "fit": "Aspirational Tamil audience", "deal": "Negotiated celebrity campaign; no barter assumption", "barter": "Low / unlikely", "url": "https://www.instagram.com/gourigkofficial/", "initials": "GG"}, {"city": "Chennai", "name": "Yuvarani Mohan", "handle": "@foodies_findings", "niche": "Food", "followers": "~1.5M", "priority": "P1", "type": "Paid", "fit": "Major food reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/foodies_findings/", "initials": "YM"}, {"city": "Chennai", "name": "Krish Ashok", "handle": "@_masalalab", "niche": "Food Science / Cooking", "followers": "~1.4M", "priority": "P1", "type": "Paid", "fit": "Excellent science + food credibility", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/_masalalab/", "initials": "KA"}, {"city": "Chennai", "name": "Madan Gowri", "handle": "@xmadangowri", "niche": "Education / Lifestyle", "followers": "~1.4M", "priority": "P2", "type": "Strategic", "fit": "Mass Tamil digital influence", "deal": "Paid/strategic collaboration", "barter": "Low / unlikely", "url": "https://www.instagram.com/xmadangowri/", "initials": "MG"}, {"city": "Chennai", "name": "Nisha Jayaraj", "handle": "@the.chennai.foodie", "niche": "Food / Travel / Lifestyle", "followers": "~613K", "priority": "P1", "type": "Paid", "fit": "City + food fit", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/the.chennai.foodie/", "initials": "NJ"}, {"city": "Chennai", "name": "Prasanth Kumar R", "handle": "@mr.foodieengineer", "niche": "Food / Lifestyle", "followers": "~584K", "priority": "P1", "type": "Paid", "fit": "Food + local influence", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/mr.foodieengineer/", "initials": "PK"}, {"city": "Chennai", "name": "Biglee Murali", "handle": "@bigleemurali", "niche": "Fitness / Health", "followers": "~1.1M", "priority": "P1", "type": "Paid", "fit": "Fitness + health", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/bigleemurali/", "initials": "BM"}, {"city": "Chennai", "name": "Yasmin Karachiwala", "handle": "@yasminkarachiwala", "niche": "Pilates / Fitness", "followers": "~1.1M", "priority": "P1", "type": "Premium paid", "fit": "Luxury wellness positioning", "deal": "Paid Reel + Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/yasminkarachiwala/", "initials": "YK"}, {"city": "Chennai", "name": "Sivaguru Kanthasamy", "handle": "@cdt_siva", "niche": "Fitness / Lifestyle", "followers": "~832K", "priority": "P2", "type": "Paid", "fit": "High-profile fitness", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/cdt_siva/", "initials": "SK"}, {"city": "Chennai", "name": "Akshaya Hariharan", "handle": "@akshaya_hariharan_", "niche": "Fitness / Lifestyle", "followers": "~400K", "priority": "P2", "type": "Paid", "fit": "Wellness/lifestyle", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/akshaya_hariharan_/", "initials": "AH"}, {"city": "Chennai", "name": "Pradeep Kumar Fitness", "handle": "@pradeepkumar_fitness", "niche": "Fitness", "followers": "~1M+", "priority": "P2", "type": "Paid", "fit": "High reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/pradeepkumar_fitness/", "initials": "PK"}, {"city": "Chennai", "name": "Yogeshwaran Fitness", "handle": "@yogeshwaranfitness", "niche": "Fitness", "followers": "~700K+", "priority": "P2", "type": "Paid", "fit": "High reach", "deal": "Paid Reel + 3 Stories + usage rights", "barter": "Low / unlikely", "url": "https://www.instagram.com/yogeshwaranfitness/", "initials": "YF"}];
+let city = "All";
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+function priorityClass(p) { return p === "P1" ? "p1" : p === "P2" ? "p2" : "p3"; }
+
+function setupChips() {
+  const cities = ["All", ...new Set(DATA.map(x=>x.city))];
+  document.getElementById("chips").innerHTML = cities.map(c =>
+    `<button class="chip ${c===city?'active':''}" onclick="setCity('${esc(c)}')">${esc(c)}</button>`
+  ).join("");
+
+  const nicheSelect = document.getElementById("niche");
+  const currentNiche = nicheSelect.value || "all";
+  const niches = ["all", ...new Set(DATA.map(x=>x.niche).filter(Boolean))];
+  nicheSelect.innerHTML = niches.map(n =>
+    `<option value="${esc(n)}">${n==="all" ? "All niches" : esc(n)}</option>`
+  ).join("");
+  if (niches.includes(currentNiche)) nicheSelect.value = currentNiche;
+}
+function setCity(c) { city=c; setupChips(); render(); }
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  const p = document.getElementById("priority").value;
+  const n = document.getElementById("niche").value;
+  const filtered = DATA.filter(x => {
+    const text = [x.name,x.handle,x.niche,x.city,x.type,x.fit].join(" ").toLowerCase();
+    return (city==="All" || x.city===city)
+      && (p==="all" || x.priority===p)
+      && (n==="all" || x.niche===n)
+      && (!q || text.includes(q));
+  });
+  const p1 = filtered.filter(x=>x.priority==="P1").length;
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${filtered.length}</b><span>Profiles shown</span></div>
+     <div class="stat"><b>${p1}</b><span>P1 prospects</span></div>
+     <div class="stat"><b>${new Set(filtered.map(x=>x.city)).size}</b><span>Cities</span></div>`;
+  const grid = document.getElementById("grid");
+  if (!filtered.length) { grid.innerHTML='<div class="empty">No profiles match your filters.</div>'; return; }
+  grid.innerHTML = filtered.map(x => `
+    <article class="card">
+      <div class="profile">
+        <div class="avatar">${esc(x.initials)}</div>
+        <div>
+          <div class="name">${esc(x.name)} <span class="verified">✦</span></div>
+          <div class="handle">${esc(x.handle)}</div>
+        </div>
+      </div>
+      <div><span class="tag">${esc(x.niche)}</span></div>
+      <div class="meta">
+        <div class="row"><span class="label">Audience</span><span class="value">${esc(x.followers)}</span></div>
+        <div class="row"><span class="label">City</span><span class="value">${esc(x.city)}</span></div>
+        <div class="row"><span class="label">Collaboration</span><span class="value">${esc(x.type)}</span></div>
+        <div class="fit">${esc(x.fit)}</div>
+      </div>
+      <div class="footer">
+        ${x.url ? `<a class="open" href="${x.url}" target="_blank" rel="noopener">View profile →</a>` : '<span class="open">Profile link unavailable</span>'}
+        <span class="priority ${priorityClass(x.priority)}">${esc(x.priority)}</span>
+      </div>
+    </article>
+  `).join("");
+}
+function clearFilters() {
+  document.getElementById("search").value="";
+  document.getElementById("priority").value="all";
+  document.getElementById("niche").value="all";
+  city="All"; setupChips(); render();
+}
+setupChips(); render();
+</script>
+</body>
+</html>
