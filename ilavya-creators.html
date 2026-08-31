@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILAVYA — Creator Shortlist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .card-enter { animation: slideUp 0.5s ease forwards; opacity: 0; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .creator-link { text-decoration: none; color: inherit; display: block; }
+    .creator-link:hover { text-decoration: none; }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
+  </style>
+</head>
+<body class="bg-stone-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 class="text-2xl font-bold text-stone-900 tracking-tight">ILAVYA Creator Shortlist</h1>
+          <p class="text-sm text-stone-500 mt-1">11 Curated Creators — Click any card to visit their Instagram</p>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          <!-- Location Filter -->
+          <div class="relative">
+            <select id="locationFilter" onchange="applyFilters()" class="pl-3 pr-10 py-2 rounded-lg text-xs font-medium bg-white border border-stone-200 text-stone-700 hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-200 transition cursor-pointer">
+              <option value="all">All Locations</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Hyderabad">Hyderabad</option>
+            </select>
+          </div>
+          <!-- Category Filter -->
+          <div class="relative">
+            <select id="categoryFilter" onchange="applyFilters()" class="pl-3 pr-10 py-2 rounded-lg text-xs font-medium bg-white border border-stone-200 text-stone-700 hover:border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-200 transition cursor-pointer">
+              <option value="all">All Categories</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Corporate Lifestyle">Corporate Lifestyle</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Food">Food</option>
+              <option value="GRWM">GRWM</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Makeup">Makeup</option>
+              <option value="Recipes">Recipes</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Slow Living">Slow Living</option>
+              <option value="Styling">Styling</option>
+              <option value="Sustainability">Sustainability</option>
+              <option value="Travel">Travel</option>
+            </select>
+          </div>
+          <!-- Reset -->
+          <button onclick="resetFilters()" class="px-3 py-2 rounded-lg text-xs font-medium bg-stone-100 text-stone-600 hover:bg-stone-200 transition">Reset</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Grid -->
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <div id="creatorGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    <div id="emptyState" class="hidden text-center py-20">
+      <p class="text-stone-400 text-sm">No creators match the selected filters.</p>
+      <button onclick="resetFilters()" class="mt-3 px-4 py-2 rounded-lg text-xs font-medium bg-stone-900 text-white hover:bg-stone-800 transition">Clear Filters</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto px-6 pb-10 text-center">
+    <p class="text-xs text-stone-400">ILAVYA Creator Research — Internal Use Only</p>
+  </footer>
+
+  <script>
+    const creators = [
+      {city:"Bengaluru",name:"Namita Jain",handle:"@thenamitaedition",categories:"Luxury / Travel / Fashion / Lifestyle",followers:"~204K",tier:"P1",bucket:"Premium Lifestyle",note:"Luxury, travel, fashion and home-decor storytelling; strong ILAVYA aesthetic fit."},
+      {city:"Hyderabad",name:"Mahalakshmi",handle:"@pooja_vegesna",categories:"Slow Living / Fashion / Lifestyle",followers:"~664K",tier:"P1",bucket:"Premium Lifestyle",note:"Slow-living and polished lifestyle content fits ILAVYA ritual positioning."},
+      {city:"Hyderabad",name:"Ankita Katuri",handle:"@kitakaturi",categories:"Fashion / Styling / Lifestyle",followers:"~174K",tier:"P1",bucket:"Fashion / Style",note:"Editorial styling sensibility; strong premium visual direction."},
+      {city:"Hyderabad",name:"Swati Rathi",handle:"@swati.rathi_",categories:"Fashion / GRWM / Lifestyle",followers:"~296K",tier:"P1",bucket:"Fashion / Style",note:"Established fashion personality with aspirational lifestyle content."},
+      {city:"Chennai",name:"Samyuktha Shan",handle:"@samyuktha_shan",categories:"Beauty / Fashion / Fitness / Food / Travel",followers:"~1.2M",tier:"P1",bucket:"Premium Lifestyle",note:"Broad high-profile lifestyle mix with beauty, fashion, fitness and food."},
+      {city:"Chennai",name:"Vishakha Dhiman",handle:"@vishakhadhiman_",categories:"Beauty / Lifestyle / Fashion",followers:"—",tier:"P2",bucket:"Beauty",note:"Beauty-led lifestyle content with strong premium collaboration potential."},
+      {city:"Chennai",name:"Myme",handle:"@mythili_myme",categories:"Fashion / Beauty / Makeup",followers:"~116K",tier:"P2",bucket:"Beauty",note:"Fashion, makeup and hair content suited to visual-first product integration."},
+      {city:"Chennai",name:"Khusboo Pradhan",handle:"@khusboo__pradhan",categories:"Fashion / Beauty / Makeup",followers:"~65K",tier:"P2",bucket:"Beauty",note:"Niche fashion/beauty creator for premium visual content tests."},
+      {city:"Hyderabad",name:"Sneha Polapragada",handle:"@snehapolapragada",categories:"Fashion / Beauty / Shopping / Lifestyle",followers:"~205K",tier:"P2",bucket:"Fashion / Style",note:"Premium fashion, bridal, handloom and shopping ecosystem."},
+      {city:"Hyderabad",name:"Pooja Sharma",handle:"@thepslife_",categories:"Lifestyle / Fashion",followers:"~93K",tier:"P2",bucket:"Premium Lifestyle",note:"Aspirational lifestyle storytelling with a personal-brand feel."},
+      {city:"Hyderabad",name:"Nabha Natesh",handle:"@nabhanatesh",categories:"Lifestyle / Entertainment / Fashion",followers:"~4.9M",tier:"P2",bucket:"Entertainment / Personality",note:"High-profile personality with strong aspirational lifestyle reach; strategic paid only."}
+    ];
+
+    const tierStyles = {
+      P1: 'bg-amber-100 text-amber-800 border-amber-200',
+      P2: 'bg-stone-100 text-stone-700 border-stone-200'
+    };
+
+    const bucketStyles = {
+      'Premium Lifestyle': 'bg-emerald-50 text-emerald-700 border-emerald-100',
+      'Fashion / Style': 'bg-violet-50 text-violet-700 border-violet-100',
+      'Beauty': 'bg-rose-50 text-rose-700 border-rose-100',
+      'Travel / Luxury': 'bg-sky-50 text-sky-700 border-sky-100',
+      'Entertainment / Personality': 'bg-orange-50 text-orange-700 border-orange-100'
+    };
+
+    const avatarColors = ['bg-stone-800','bg-stone-700','bg-stone-600','bg-amber-900','bg-emerald-900','bg-violet-900','bg-rose-900'];
+
+    function getInitials(name) {
+      return name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase();
+    }
+
+    function getAvatarColor(name) {
+      let hash = 0;
+      for(let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+      return avatarColors[Math.abs(hash) % avatarColors.length];
+    }
+
+    function getFollowerNum(f) {
+      if (f === '—') return 0;
+      const num = parseFloat(f.replace(/[^0-9.]/g, ''));
+      if (f.includes('M')) return num * 1000000;
+      if (f.includes('K')) return num * 1000;
+      return num;
+    }
+
+    function getInstagramUrl(handle) {
+      return 'https://instagram.com/' + handle.replace('@', '');
+    }
+
+    function renderCards(data) {
+      const grid = document.getElementById('creatorGrid');
+      const empty = document.getElementById('emptyState');
+      grid.innerHTML = '';
+
+      let filtered = [...data];
+      filtered.sort((a,b) => getFollowerNum(b.followers) - getFollowerNum(a.followers));
+
+      if (filtered.length === 0) {
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+
+      filtered.forEach((c, idx) => {
+        const a = document.createElement('a');
+        a.href = getInstagramUrl(c.handle);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'creator-link';
+
+        const div = document.createElement('div');
+        div.className = 'bg-white rounded-2xl border border-stone-200 p-5 hover:shadow-xl hover:border-stone-300 transition-all duration-300 card-enter group cursor-pointer';
+        div.style.animationDelay = (idx * 60) + 'ms';
+
+        div.innerHTML = `
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full ${getAvatarColor(c.name)} flex items-center justify-center text-white text-sm font-bold tracking-wider shadow-sm">
+                ${getInitials(c.name)}
+              </div>
+              <div>
+                <h3 class="font-semibold text-stone-900 text-sm leading-tight group-hover:text-stone-700 transition">${c.name}</h3>
+                <p class="text-xs text-stone-400 mt-0.5 font-mono">${c.handle}</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${tierStyles[c.tier]}">${c.tier}</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-xs text-stone-500">
+              <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>${c.city}</span>
+              <span class="mx-1 text-stone-300">|</span>
+              <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              <span class="font-semibold text-stone-700">${c.followers}</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-medium border ${bucketStyles[c.bucket] || 'bg-stone-50 text-stone-700 border-stone-100'}">${c.bucket}</span>
+            </div>
+
+            <div class="pt-2 border-t border-stone-100">
+              <p class="text-[11px] text-stone-500 leading-relaxed">${c.categories}</p>
+            </div>
+
+            <div class="bg-stone-50 rounded-xl p-3 mt-1 group-hover:bg-stone-100 transition-colors">
+              <p class="text-[11px] text-stone-600 leading-relaxed">"${c.note}"</p>
+            </div>
+
+            <div class="flex items-center gap-1 text-[10px] text-stone-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span>Open Instagram</span>
+            </div>
+          </div>
+        `;
+        a.appendChild(div);
+        grid.appendChild(a);
+      });
+    }
+
+    function applyFilters() {
+      const loc = document.getElementById('locationFilter').value;
+      const cat = document.getElementById('categoryFilter').value;
+
+      let filtered = creators;
+
+      if (loc !== 'all') {
+        filtered = filtered.filter(c => c.city === loc);
+      }
+
+      if (cat !== 'all') {
+        filtered = filtered.filter(c => c.categories.includes(cat));
+      }
+
+      renderCards(filtered);
+    }
+
+    function resetFilters() {
+      document.getElementById('locationFilter').value = 'all';
+      document.getElementById('categoryFilter').value = 'all';
+      renderCards(creators);
+    }
+
+    renderCards(creators);
+  </script>
+</body>
+</html>
